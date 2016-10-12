@@ -33,5 +33,14 @@ This is handled by the wrapper `evil-adjust-eval-last-sexp`.
 * Place `evil-adjust.el` on your emacs `load-path`.
 * Add the following initialization code to your `.emacs` or `.emacs.d/init.el` file:
 
-    (require 'evil-adjust')
-    (evil-adjust)
+        (require 'evil-adjust)
+        (evil-adjust)
+
+## Installation (Spacemacs)
+
+* Add the following to `dotspacemacs-additional-packages` in your init file:
+
+        (evil-adjust :location (recipe :fetcher github :repo "troyp/evil-adjust"))
+
+* Add the initialization code (as above) to `dotspacemacs/user-config` in your
+    init file.
