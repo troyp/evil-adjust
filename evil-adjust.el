@@ -4,7 +4,7 @@
 
 ;; Author: Troy Pracy
 ;; Keywords: evil
-;; Version: 0.0.1
+;; Version: 0.1
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -33,6 +33,10 @@
 ;; This package adjusts for these issues by remapping the affected functions to
 ;; evil-adjust wrappers.
 
+;; Installation:
+;;   (require 'evil-adjust)
+;;   (evil-adjust)
+
 ;;; Code:
 
   (defun evil-adjust-eval-print-last-sexp (&optional arg)
@@ -47,6 +51,7 @@ Long output is truncated. See the variables `eval-expression-print-length' and
 A prefix argument of 0 inhibits truncation and prints integers with additional
 octal, hexadecimal and character representations, in the format: 1 (#o1, #x1,
 ?\C-a).
+
 Errors start the debugger unless an argument of `nil' is passed for
 `eval-expression-debug-on-error'."
     (interactive "P")
