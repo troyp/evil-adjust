@@ -7,7 +7,8 @@ This package compensates for annoying off-by-one incompatibilities between
 
 When using `lisp-interaction-mode` in `evil-normal-state`, one cannot use
 <kbd>C-x</kbd><kbd>C-j</kbd> (`eval-print-last-sexp`) on the last character of a
-sexp, since Emacs thinks the cursor is one space back.
+sexp, since Emacs thinks the cursor is one space back. This issue usually crops
+up when executing the command at the end of the line.
 
 One way of avoiding this is to set the variable `evil-move-cursor-back` to `nil`.
 However, this is inconvenient for the majority of commands, since the cursor is
