@@ -45,3 +45,14 @@ This is handled by the wrapper `evil-adjust-eval-last-sexp`.
 
 * Add the initialization code (as above) to `dotspacemacs/user-config` in your
     init file.
+
+## Disabling a remapping
+
+If you're on Emacs 25, but don't want to remap `eval-last-sexp` (perhaps the latest
+Evil has corrected the problem), you can perform only the `eval-print-last-sexp`
+remapping with:
+
+    (evil-adjust :noemacs25fix)
+
+Similarly, `:noevalprintfix` can be used if you *only* want the `eval-last-sexp`
+remapping.
