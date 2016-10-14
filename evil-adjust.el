@@ -104,27 +104,31 @@ Errors start the debugger unless an argument of `nil' is passed for
     (string-match-p (regexp-quote "Emacs 25.")
                     (emacs-version))))
 
-(defun evil-adjust ()
+(defun evil-adjust (&rest options)
   "Initialize evil adjustments.
 
 Remaps `eval-print-last-sexp' to `evil-adjust-eval-print-last-sexp'.
 In Emacs 25, additionally remaps `eval-last-sexp' to `evil-adjust-eval-last-sexp'.
+The options `:noevalprintfix' and `:noemacs25fix' inhibit specific adjustments.
 
 This function must be called after the variable `evil-move-cursor-back' is set."
   (interactive)
-  (when evil-move-cursor-back
+  (when (and evil-move-cursor-back
+             (not (member :noevalprintfix options)))
     (define-key lisp-interaction-mode-map
       [remap eval-print-last-sexp]
       'evil-adjust-eval-print-last-sexp))
+
   (when (and (evil-adjust-emacs25-p)
-             evil-move-cursor-back)
+             evil-move-cursor-back
+             (not (member :noemacs25fix options)))
     (define-key emacs-lisp-mode-map
       [remap eval-last-sexp]
       'evil-adjust-eval-last-sexp)
     (define-key lisp-interaction-mode-map
       [remap eval-last-sexp]
       'evil-adjust-eval-last-sexp)))
-
+
 (provide 'evil-adjust)
 
-;;; evil-adjust ends here
+;;; evil-adjust.el ends here
