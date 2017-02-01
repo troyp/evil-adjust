@@ -4,7 +4,7 @@
 
 ;; Author: Troy Pracy
 ;; Keywords: evil
-;; Version: 0.1
+;; Version: 0.2
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -100,9 +100,7 @@ Errors start the debugger unless an argument of `nil' is passed for
       ))
 
 (defun evil-adjust-emacs25-p ()
-  (let ((case-fold-search t))
-    (string-match-p (regexp-quote "Emacs 25.")
-                    (emacs-version))))
+  (return (= 25 (truncate (string-to-number emacs-version)))))
 
 (defun evil-adjust (&rest options)
   "Initialize evil adjustments.
@@ -119,7 +117,7 @@ This function must be called after the variable `evil-move-cursor-back' is set."
       [remap eval-print-last-sexp]
       'evil-adjust-eval-print-last-sexp))
 
-  (when (and (evil-adjust-emacs25-p)
+  (when (and (= 25 (truncate (string-to-number emacs-version)))
              evil-move-cursor-back
              (not (member :noemacs25fix options)))
     (define-key emacs-lisp-mode-map
